@@ -1,5 +1,5 @@
 # Events
-This is a simple library that allows to create event listeners.
+This is a simple event service that allows you to emit events, listen events using glob regex to match event names. Destroy event listeners. It is context aware and allows you to use it for graceful shutdown.
 
 ## Installation
 ```sh
