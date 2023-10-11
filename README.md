@@ -5,7 +5,7 @@ This is a simple library that allows to create event listeners.
 go get github.com/4strodev/events@latest
 
 ## Usage
-Here a loggin example
+Loggin example
 ```go
 package main
 
