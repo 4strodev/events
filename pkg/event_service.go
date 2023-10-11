@@ -3,7 +3,6 @@ package events
 import (
 	"context"
 	"errors"
-	"log"
 	"sync"
 
 	"github.com/gobwas/glob"
@@ -44,7 +43,7 @@ func (e *EventService) Start() {
 						err := listener(event)
 						err = e.config.ErrorHandler(err)
 						if err != nil {
-							log.Fatal(err)
+							panic(err)
 						}
 					}(event, h)
 				}
