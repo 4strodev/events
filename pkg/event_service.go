@@ -53,7 +53,8 @@ func (e *EventService) Start() {
 	}()
 }
 
-// Register a new event listener. Remember tag accepts glob regex.
+// Register a new event listener and returns the destroyer for that listener.
+// Remember tag accepts glob regex.
 // Ej.
 //
 // - listen all events: "*"
