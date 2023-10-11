@@ -38,7 +38,7 @@ func main() {
         case <-event.Ctx().Done():
             return context.Cause(event.Ctx())
         default:
-            log.Println(event.Name())
+            log.Println(event.Tag())
             log.Println(event.CreatedAt())
             log.Println(event.Payload())
             return  nil

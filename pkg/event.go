@@ -20,7 +20,7 @@ type Event interface {
 
 // The base event implements the Event interface adding some basic fields
 type BaseEvent struct {
-	name      string
+	tag      string
 	createdAt time.Time
 	payload   any
 	ctx       *context.Context
@@ -28,13 +28,13 @@ type BaseEvent struct {
 
 func NewBaseEvent(name string) BaseEvent {
 	return BaseEvent {
-		name: name,
+		tag: name,
 		createdAt: time.Now(),
 	}
 }
 
 func (b *BaseEvent) Tag() string {
-	return b.name
+	return b.tag
 }
 
 func (b *BaseEvent) CreatedAt() time.Time {
