@@ -1,19 +1,11 @@
-# Events
-This is a simple library that allows to create event listeners.
-
-## Installation
-go get github.com/4strodev/events@latest
-
-## Usage
-Loggin example
-```go
 package main
 
 import (
-    "log"
-    "sync"
-    "context"
-    "github.com/4strodev/events/pkg"
+	"context"
+	"log"
+	"sync"
+
+	events "github.com/4strodev/events/pkg"
 )
 
 func main() {
@@ -55,4 +47,3 @@ func main() {
     // Note! When you stop the event service you cannot start it again. This method exist for graceful shutdowns
     eventService.Stop()
 }
-```

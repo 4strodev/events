@@ -1,4 +1,4 @@
-package pkg
+package events
 
 import (
 	"context"
@@ -22,7 +22,7 @@ type EventService struct {
 	listenersMutex sync.Mutex
 	closedMutex    sync.Mutex
 	config         EventServiceConfig
-	ctx            *context.Context
+	ctx            context.Context
 	cancelFunc     context.CancelCauseFunc
 	closed         bool
 }
@@ -81,7 +81,7 @@ func (e *EventService) Emit(event Event) {
 	if e.IsClosed() {
 		panic("event service is closed")
 	}
-	e.eventQueue <- event
+	e.eventQueue <- event.WithCtx(e.ctx)
 }
 
 // Stop ends event emitting and listening. At this moment every emit or listen will panic
@@ -149,7 +149,7 @@ func NewEventService(config ...EventServiceConfig) *EventService {
 		eventQueue:     make(chan Event),
 		listenersMutex: sync.Mutex{},
 		config:         serviceConfig,
-		ctx:            &ctx,
+		ctx:            ctx,
 		cancelFunc:     cancel,
 		closed:         false,
 	}
