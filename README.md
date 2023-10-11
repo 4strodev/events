@@ -46,7 +46,7 @@ func main() {
     })
 
     event := events.NewBaseEvent("event")
-    eventService.Emit(&event)
+    eventService.Emit(event.WithPayload("A simple payload"))
 
     waitGroup.Wait()
 
