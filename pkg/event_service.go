@@ -3,6 +3,7 @@ package events
 import (
 	"context"
 	"errors"
+	"fmt"
 	"sync"
 
 	"github.com/gobwas/glob"
@@ -40,6 +41,17 @@ func (e *EventService) Start() {
 				listeners := e.getListeners(listenerTag)
 				for _, h := range listeners {
 					go func(event Event, listener EventListener) {
+						defer func() {
+							err := recover()
+							if err == nil {
+								return
+							}
+
+							err = e.config.ErrorHandler(fmt.Errorf("%v", err))
+							if err != nil {
+								panic(err)
+							}
+						}()
 						err := listener(event)
 						err = e.config.ErrorHandler(err)
 						if err != nil {
