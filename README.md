@@ -2,7 +2,9 @@
 This is a simple library that allows to create event listeners.
 
 ## Installation
+```sh
 go get github.com/4strodev/events@latest
+```
 
 ## Usage
 Loggin example
