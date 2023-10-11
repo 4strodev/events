@@ -56,3 +56,7 @@ func main() {
     eventService.Stop()
 }
 ```
+
+## More information
+[Go doc](https://pkg.go.dev/github.com/4strodev/events)
+
